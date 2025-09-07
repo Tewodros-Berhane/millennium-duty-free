@@ -140,10 +140,7 @@ function Hero() {
 }
 
 function HeroGallery() {
-	const images = useMemo(
-		() => ["/hero1.jpg",  "/hero3.jpg",],
-		[]
-	);
+	const images = useMemo(() => ["/hero1.jpg", "/hero3.jpg"], []);
 	const [idx, setIdx] = useState(0);
 
 	useEffect(() => {
@@ -514,80 +511,31 @@ function ContactUs() {
 function SiteFooter() {
 	return (
 		<footer className="border-t border-white/10 bg-[#fafec9]">
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-6 text-sm text-slate-900">
+			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-2 lg:gap-96 md:gap-12 sm:gap-6 sm:flex sm:items-center sm:justify-center sm:text-center   text-sm text-slate-900">
 				<div>
-					<div className="flex items-center gap-2">
-						<a href="#" className="flex items-center gap-2 group">
-							<div className="h-9 w-9 rounded-xl bg-gradient-to-tr  grid place-content-center ">
-								{/* <Plane className="h-5 w-5" /> */}
-								<Image
-									src="/logo.png"
-									alt="Millennium Duty Free"
-									width={32}
-									height={32}
-									className="text-slate-900"
-								/>
-							</div>
-							<span className="text-xl font-semibold tracking-tight">
-								<span className="text-slate-900">Millennium</span>
-								<span style={{ color: ACCENT }}>Duty</span>
-								<span className="text-slate-900"> Free</span>
-							</span>
-						</a>
-					</div>
-					<p className="mt-3 ml-6">
-						Your airport companion for luxury.
+					<a href="#" className="flex items-center gap-2 group">
+						<div className="h-9 w-9 rounded-xl bg-gradient-to-tr  grid place-content-center ">
+							{/* <Plane className="h-5 w-5" /> */}
+							<Image
+								src="/logo.png"
+								alt="Millennium Duty Free"
+								width={32}
+								height={32}
+								className="text-slate-900"
+							/>
+						</div>
+						<span className="text-xl font-semibold tracking-tight">
+							<span className="text-slate-900">Millennium</span>
+							<span style={{ color: ACCENT }}>Duty</span>
+							<span className="text-slate-900"> Free</span>
+						</span>
+					</a>
+					<p className="mt-3">
+						Your airport companion for savings and luxury.
 					</p>
 				</div>
 				<div>
-					<p className="font-semibold text-slate-900 mb-2">Shop</p>
-					<ul className="space-y-1">
-						<li>
-							<a className="hover:text-white" href="#">
-								Fragrances
-							</a>
-						</li>
-						<li>
-							<a className="hover:text-white" href="#">
-								Cosmetics
-							</a>
-						</li>
-						<li>
-							<a className="hover:text-white" href="#">
-								Chocolates
-							</a>
-						</li>
-						<li>
-							<a className="hover:text-white" href="#">
-								Spirits
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div className="ml-5">
-					<p className="font-semibold text-slate-900 mb-2">
-						Traveler Help
-					</p>
-					<ul className="space-y-1">
-						<li>
-							<a className="hover:text-white" href="#">
-								Reserve & Collect
-							</a>
-						</li>
-						<li>
-							<a className="hover:text-white" href="#">
-								Baggage Rules
-							</a>
-						</li>
-						<li>
-							<a className="hover:text-white" href="#">
-								FAQs
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div>
-					<p className="font-semibold text-white mb-2">Contact</p>
+					<p className="font-semibold text-slate-900 mb-2 sm:text-center">Contact</p>
 					<ul className="space-y-1">
 						<li className="flex items-center gap-2">
 							<Clock className="h-4 w-4" /> 24/7 Support
@@ -599,7 +547,7 @@ function SiteFooter() {
 					</ul>
 				</div>
 			</div>
-			<div className="border-t border-white/10 py-5 text-center text-xs text-white/50">
+			<div className="border-t border-white/10 py-5 text-center text-xs text-slate-990">
 				© {new Date().getFullYear()} Millennium Duty Free. All rights
 				reserved.
 			</div>
