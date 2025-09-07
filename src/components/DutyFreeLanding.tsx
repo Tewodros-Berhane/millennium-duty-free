@@ -513,23 +513,34 @@ function ContactUs() {
 
 function SiteFooter() {
 	return (
-		<footer className="border-t border-white/10 bg-slate-950/60">
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-6 text-sm text-white/70">
+		<footer className="border-t border-white/10 bg-[#fafec9]">
+			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-6 text-sm text-slate-900">
 				<div>
 					<div className="flex items-center gap-2">
-						<div className="h-8 w-8 rounded-lg bg-gradient-to-tr from-teal-400 to-cyan-500 grid place-content-center">
-							<Plane className="h-4 w-4 text-slate-900" />
-						</div>
-						<p className="font-semibold text-white">
-							Millennium Duty Free
-						</p>
+						<a href="#" className="flex items-center gap-2 group">
+							<div className="h-9 w-9 rounded-xl bg-gradient-to-tr  grid place-content-center ">
+								{/* <Plane className="h-5 w-5" /> */}
+								<Image
+									src="/logo.png"
+									alt="Millennium Duty Free"
+									width={32}
+									height={32}
+									className="text-slate-900"
+								/>
+							</div>
+							<span className="text-xl font-semibold tracking-tight">
+								<span className="text-slate-900">Millennium</span>
+								<span style={{ color: ACCENT }}>Duty</span>
+								<span className="text-slate-900"> Free</span>
+							</span>
+						</a>
 					</div>
-					<p className="mt-3">
-						Your airport companion for savings and luxury.
+					<p className="mt-3 ml-6">
+						Your airport companion for luxury.
 					</p>
 				</div>
 				<div>
-					<p className="font-semibold text-white mb-2">Shop</p>
+					<p className="font-semibold text-slate-900 mb-2">Shop</p>
 					<ul className="space-y-1">
 						<li>
 							<a className="hover:text-white" href="#">
@@ -553,8 +564,8 @@ function SiteFooter() {
 						</li>
 					</ul>
 				</div>
-				<div>
-					<p className="font-semibold text-white mb-2">
+				<div className="ml-5">
+					<p className="font-semibold text-slate-900 mb-2">
 						Traveler Help
 					</p>
 					<ul className="space-y-1">
