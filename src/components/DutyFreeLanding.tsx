@@ -77,28 +77,28 @@ function NavBar() {
 				<nav className="hidden md:flex items-center gap-7 text-sm">
 					<a
 						className="text-slate-900 hover:text-slate-900 transition"
-						href="#shop"
+						href="#about"
 					>
-						Shop
+						About
 					</a>
 					<a
 						className="text-slate-900 hover:text-slate-900 transition"
-						href="#offers"
+						href="#product"
 					>
-						Exclusive Offers
+						Products
 					</a>
 					<a
 						className="text-slate-900 hover:text-slate-900 transition"
-						href="#arrivals"
+						href="#contact"
 					>
-						Arrivals
+						Contact Us
 					</a>
-					<a
+					{/* <a
 						className="text-slate-900 hover:text-slate-900 transition"
 						href="#rewards"
 					>
 						Rewards
-					</a>
+					</a> */}
 				</nav>
 			</div>
 		</header>
@@ -321,16 +321,13 @@ function FeaturedCategories() {
 	];
 	return (
 		<section
-			id="shop"
+			id="product"
 			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6"
 		>
 			<div className="flex items-end justify-between mb-6">
 				<h2 className="text-2xl md:text-3xl font-bold">
 					Featured Categories
 				</h2>
-				{/* <Button variant="secondary" className="text-slate-900 bg-white hover:bg-white/90">
-          Explore All <ArrowRight className="h-4 w-4 ml-2" />
-        </Button> */}
 			</div>
 			<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 				{cats.map((c) => (
