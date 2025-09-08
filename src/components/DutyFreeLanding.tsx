@@ -350,8 +350,7 @@ function CategoryCard({ name, imgs }: { name: string; imgs: string[] }) {
             src={src}
             alt={`${name} ${i + 1}`}
             className={`absolute inset-0 h-full w-full object-cover 
-                        transition-opacity duration-700 ease-in-out will-change-[opacity,transform]
-                        ${i === idx ? "opacity-100" : "opacity-0"}`}
+                        transition-transform duration-500 group-hover:scale-105`}
           />
         ))}
       </div>
