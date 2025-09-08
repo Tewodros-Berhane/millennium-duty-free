@@ -319,7 +319,7 @@ function FeaturedCategories() {
 			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6"
 		>
 			<h2 className=" flex items-center justify-center mb-6 text-2xl md:text-3xl font-bold text-center  text-[#233b72]">
-				Featured Categories
+				Products
 			</h2>
 			<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 				{cats.map((c) => (
@@ -473,7 +473,7 @@ function ContactUs() {
 
 						<Button
 							type="submit"
-							className="w-full bg-[#d3b462] hover:bg-yellow-500 text-slate-900 font-semibold disabled:opacity-70"
+							className="w-full bg-[#d3b462] hover:bg-[#d3b462]/90 text-[#233b72] font-semibold disabled:opacity-70"
 							disabled={loading}
 						>
 							{loading ? (
@@ -491,7 +491,7 @@ function ContactUs() {
 							<div
 								className={`flex items-start gap-2 text-sm ${
 									status.ok
-										? "text-slate-900"
+										? "text-[#233b72]"
 										: "text-rose-300"
 								}`}
 								role="status"
