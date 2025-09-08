@@ -129,40 +129,44 @@ function Hero() {
 }
 
 function HeroGallery() {
-	const images = useMemo(
-		() => ["/hero1.jpg", "/hero3.jpg", "/hero5.jpg"],
-		[]
-	);
-	const [idx, setIdx] = useState(0);
+  const images = useMemo(
+    () => ["/hero5.jpg"], 
+    []
+  );
+  const [idx, setIdx] = useState(0);
 
-	useEffect(() => {
-		const t = setInterval(
-			() => setIdx((i) => (i + 1) % images.length),
-			3500
-		);
-		return () => clearInterval(t);
-	}, [images.length]);
+  useEffect(() => {
+    if (images.length <= 1) return; // 👉 no slideshow if only one image
 
-	return (
-		<div className="absolute inset-0">
-			{images.map((src, i) => (
-				<div
-					key={i}
-					className={`absolute inset-0 transition-opacity  duration-700 ${
-						i === idx ? "opacity-100" : "opacity-0"
-					}`}
-				>
-					<Image
-						src={src}
-						alt="Duty-free showcase"
-						fill
-						className="object-cover"
-					/>
-				</div>
-			))}
-		</div>
-	);
+    const t = setInterval(
+      () => setIdx((i) => (i + 1) % images.length),
+      3500
+    );
+    return () => clearInterval(t);
+  }, [images.length]);
+
+  return (
+    <div className="absolute inset-0">
+      {images.map((src, i) => (
+        <div
+          key={i}
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            i === idx ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <Image
+            src={src}
+            alt="Duty-free showcase"
+            fill
+            className="object-cover"
+            priority={i === 0} // ensures first loads eagerly
+          />
+        </div>
+      ))}
+    </div>
+  );
 }
+
 
 function VideoShowcase() {
 	const ref = useRef<HTMLVideoElement | null>(null);
@@ -287,13 +291,11 @@ function FeaturedCategories() {
 			name: "Fragrances",
 			imgs: [
 				"/fragrances/1.jpg",
-				// "/fragrances/2.jpg",
-				// "/fragrances/3.jpg",
 			],
 		},
 		{
 			name: "Accessories",
-			imgs: ["/accessories/1.jpg", "/accessories/2.jpg"],
+			imgs: ["/accessories/2.jpg"],
 		},
 		{
 			name: "Chocolates",
@@ -301,15 +303,15 @@ function FeaturedCategories() {
 		},
 		{
 			name: "Spirits",
-			imgs: ["/spirits/1.jpg", "/spirits/2.jpg", "/spirits/3.jpg"],
+			imgs: ["/spirits/1.jpg"],
 		},
 		{
 			name: "Tobacco",
-			imgs: ["tobacco/1.png", "/tobacco/2.png"],
+			imgs: [ "/tobacco/2.png"],
 		},
 		{
 			name: "Luxury",
-			imgs: ["/luxuries/1.jpg", "/luxuries/2.jpg"],
+			imgs: ["/luxuries/2.jpg"],
 		},
 	];
 
@@ -331,30 +333,40 @@ function FeaturedCategories() {
 }
 
 function CategoryCard({ name, imgs }: { name: string; imgs: string[] }) {
-	const [idx, setIdx] = useState(0);
+  const [idx, setIdx] = useState(0);
 
-	useEffect(() => {
-		const t = setInterval(
-			() => setIdx((i) => (i + 1) % imgs.length),
-			3000 // 3s per image
-		);
-		return () => clearInterval(t);
-	}, [imgs.length]);
+  useEffect(() => {
+    if (imgs.length <= 1) return; 
+    const t = setInterval(() => setIdx((i) => (i + 1) % imgs.length), 3000);
+    return () => clearInterval(t);
+  }, [imgs.length]);
 
-	return (
-		<a className="group relative rounded-2xl overflow-hidden text-white">
-			<img
-				src={imgs[idx]}
-				alt={name}
-				className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-			/>
-			<div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-			<div className="absolute bottom-4 left-4">
-				<h3 className="mt-2 text-xl font-semibold">{name}</h3>
-			</div>
-		</a>
-	);
+  return (
+    <a className="group relative rounded-2xl overflow-hidden text-white">
+      <div className="relative h-64 w-full">
+        {imgs.map((src, i) => (
+          <img
+            key={src + i}
+            src={src}
+            alt={`${name} ${i + 1}`}
+            className={`absolute inset-0 h-full w-full object-cover 
+                        transition-opacity duration-700 ease-in-out will-change-[opacity,transform]
+                        ${i === idx ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
+      </div>
+
+      {/* Optional gentle zoom on hover (applies to the visible layer) */}
+      <div className="pointer-events-none absolute inset-0 transition-transform duration-500 group-hover:scale-[1.03]" />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+      <div className="absolute bottom-4 left-4">
+        <h3 className="mt-2 text-xl font-semibold">{name}</h3>
+      </div>
+    </a>
+  );
 }
+
 
 function ContactUs() {
 	const [loading, setLoading] = useState(false);
