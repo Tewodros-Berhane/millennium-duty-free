@@ -55,50 +55,39 @@ export default function DutyFreeLanding() {
 
 function NavBar() {
 	return (
-		<header className="sticky top-0 z-50 backdrop-blur bg-[#fafec9] border-white/10">
+		<header className="sticky top-0 z-50 backdrop-blur bg-[#233b72] border-white/10">
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-				<a href="#" className="flex items-center gap-2 group">
-					<div className="h-9 w-9 rounded-xl bg-gradient-to-tr  grid place-content-center ">
-						{/* <Plane className="h-5 w-5" /> */}
-						<Image
-							src="/logo.png"
-							alt="Millennium Duty Free"
-							width={32}
-							height={32}
-							className="text-slate-900"
-						/>
-					</div>
-					<span className="text-xl font-semibold tracking-tight">
-						<span className="text-slate-900">Millennium</span>
-						<span style={{ color: ACCENT }}>Duty</span>
-						<span className="text-slate-900"> Free</span>
-					</span>
+				{/* Left: Logo only */}
+				<a href="#" className="flex items-center">
+					<Image
+						src="/logo.jpg" // put your uploaded logo in /public/logo.jpg
+						alt="Millennium Duty Free"
+						width={180} // adjust width depending on how wide you want it
+						height={60}
+						priority
+					/>
 				</a>
+
+				{/* Right: nav links */}
 				<nav className="hidden md:flex items-center gap-7 text-sm">
 					<a
-						className="text-slate-900 hover:text-slate-900 transition"
+						className="text-[#d3b462] hover:text-white transition"
 						href="#about"
 					>
 						About
 					</a>
 					<a
-						className="text-slate-900 hover:text-slate-900 transition"
+						className="text-[#d3b462] hover:text-white0 transition"
 						href="#product"
 					>
 						Products
 					</a>
 					<a
-						className="text-slate-900 hover:text-slate-900 transition"
+						className="text-[#d3b462] hover:text-white transition"
 						href="#contact"
 					>
 						Contact Us
 					</a>
-					{/* <a
-						className="text-slate-900 hover:text-slate-900 transition"
-						href="#rewards"
-					>
-						Rewards
-					</a> */}
 				</nav>
 			</div>
 		</header>
@@ -109,7 +98,7 @@ function Hero() {
 		<section className="relative h-[92vh] w-full overflow-hidden">
 			{/* Background (video or slideshow) */}
 			<HeroGallery />
-			<div className="absolute inset-0 bg-white/15  z-[1]" />
+			<div className="absolute inset-0   z-[1]" />
 
 			{/* New Year burst (confetti + fading message) */}
 			<AdeyAbebaConfetti />
@@ -140,7 +129,10 @@ function Hero() {
 }
 
 function HeroGallery() {
-	const images = useMemo(() => ["/hero1.jpg", "/hero3.jpg"], []);
+	const images = useMemo(
+		() => ["/hero1.jpg", "/hero3.jpg", "/hero5.jpg"],
+		[]
+	);
 	const [idx, setIdx] = useState(0);
 
 	useEffect(() => {
@@ -206,7 +198,7 @@ function VideoShowcase() {
 					<video
 						ref={ref}
 						src="/mdf-video.mp4"
-						className="absolute inset-0 h-full w-full object-cover"
+						className="absolute inset-0 h-full w-full object-cover sm:object-cover"
 						autoPlay
 						muted
 						loop
@@ -264,7 +256,7 @@ function AboutMillennium() {
 			id="about"
 			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14"
 		>
-			<h2 className="text-3xl font-bold text-center text-slate-700 mb-10">
+			<h2 className="text-3xl font-bold text-center text-[#233b72] mb-10">
 				About Millennium Duty Free
 			</h2>
 			<div className="grid md:grid-cols-3 gap-6">
@@ -293,63 +285,74 @@ function FeaturedCategories() {
 	const cats = [
 		{
 			name: "Fragrances",
-			img: "https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1600&auto=format&fit=crop",
+			imgs: [
+				"/fragrances/1.jpg",
+				// "/fragrances/2.jpg",
+				// "/fragrances/3.jpg",
+			],
 		},
 		{
 			name: "Accessories",
-			img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1600&auto=format&fit=crop",
+			imgs: ["/accessories/1.jpg", "/accessories/2.jpg"],
 		},
 		{
 			name: "Chocolates",
-			img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop",
+			imgs: ["/chocolates/1.jpg"],
 		},
 		{
 			name: "Spirits",
-			img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1600&auto=format&fit=crop",
+			imgs: ["/spirits/1.jpg", "/spirits/2.jpg", "/spirits/3.jpg"],
 		},
 		{
 			name: "Tobacco",
-			img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop",
+			imgs: ["tobacco/1.png", "/tobacco/2.png"],
 		},
 		{
 			name: "Luxury",
-			img: "https://images.unsplash.com/photo-1556228720-da4e85f25e15?q=80&w=1600&auto=format&fit=crop",
+			imgs: ["/luxuries/1.jpg", "/luxuries/2.jpg"],
 		},
 	];
+
 	return (
 		<section
 			id="product"
 			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6"
 		>
-			<div className="flex items-end justify-between mb-6">
-				<h2 className="text-2xl md:text-3xl font-bold">
-					Featured Categories
-				</h2>
-			</div>
+			<h2 className=" flex items-center justify-center mb-6 text-2xl md:text-3xl font-bold text-center  text-[#233b72]">
+				Featured Categories
+			</h2>
 			<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 				{cats.map((c) => (
-					<a
-						key={c.name}
-						className="group relative rounded-2xl overflow-hidden text-white"
-					>
-						<img
-							src={c.img}
-							alt={c.name}
-							className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-						/>
-						<div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-						<div className="absolute bottom-4 left-4">
-							{/* <Badge className="bg-slate-900/80 border-white/10 text-white">
-                <Sparkles className="h-3.5 w-3.5 mr-1" /> New Picks
-              </Badge> */}
-							<h3 className="mt-2 text-xl font-semibold">
-								{c.name}
-							</h3>
-						</div>
-					</a>
+					<CategoryCard key={c.name} name={c.name} imgs={c.imgs} />
 				))}
 			</div>
 		</section>
+	);
+}
+
+function CategoryCard({ name, imgs }: { name: string; imgs: string[] }) {
+	const [idx, setIdx] = useState(0);
+
+	useEffect(() => {
+		const t = setInterval(
+			() => setIdx((i) => (i + 1) % imgs.length),
+			3000 // 3s per image
+		);
+		return () => clearInterval(t);
+	}, [imgs.length]);
+
+	return (
+		<a className="group relative rounded-2xl overflow-hidden text-white">
+			<img
+				src={imgs[idx]}
+				alt={name}
+				className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+			/>
+			<div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+			<div className="absolute bottom-4 left-4">
+				<h3 className="mt-2 text-xl font-semibold">{name}</h3>
+			</div>
+		</a>
 	);
 }
 
@@ -414,7 +417,7 @@ function ContactUs() {
 				<div className="grid lg:grid-cols-2 gap-6 items-center">
 					{/* Left side text */}
 					<div>
-						<h3 className="text-2xl md:text-3xl font-bold">
+						<h3 className="text-2xl md:text-3xl font-bold text-[#233b72]">
 							Contact Us
 						</h3>
 						<p className="mt-2 text-slate-700">
@@ -424,17 +427,18 @@ function ContactUs() {
 						</p>
 						<ul className="mt-4 text-white/80 text-sm space-y-2">
 							<li className="flex items-center gap-2 text-slate-900">
-								<MapPin className="h-4 w-4 text-[#1e5183]" />
+								<a href="https://maps.app.goo.gl/723Uw196XSuSy2d1A">
+									<MapPin className="h-4 w-4 text-[#d3b462]" />
+								</a>
 								Addis Ababa Bole Airport · Skylight Hotel
 							</li>
 							<li className="flex items-center gap-2 text-slate-900">
-								<Clock className="h-4 w-4 text-[#1e5183]" />{" "}
+								<Clock className="h-4 w-4 text-[#d3b462]" />{" "}
 								Open Hours - 24/7
 							</li>
 							<li className="flex items-center gap-2 text-slate-900">
-								<Phone className="h-4 w-4 text-[#1e5183]" /> +1
-								(800) 123-4567 - Hana gebre/Skylight Shop
-								Manager
+								<Phone className="h-4 w-4 text-[#d3b462]" />{" "}
+								+251948878070 - Hana - Skylight Shop Manager
 							</li>
 						</ul>
 					</div>
@@ -469,7 +473,7 @@ function ContactUs() {
 
 						<Button
 							type="submit"
-							className="w-full bg-yellow-200 hover:bg-yellow-400 text-slate-900 font-semibold disabled:opacity-70"
+							className="w-full bg-[#d3b462] hover:bg-yellow-500 text-slate-900 font-semibold disabled:opacity-70"
 							disabled={loading}
 						>
 							{loading ? (
@@ -509,51 +513,54 @@ function ContactUs() {
 }
 
 function SiteFooter() {
-	return (
-		<footer className="border-t border-white/10 bg-[#fafec9]">
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-2 lg:gap-96 md:gap-12 sm:gap-6 sm:flex sm:items-center sm:justify-center sm:text-center   text-sm text-slate-900">
-				<div>
-					<a href="#" className="flex items-center gap-2 group">
-						<div className="h-9 w-9 rounded-xl bg-gradient-to-tr  grid place-content-center ">
-							{/* <Plane className="h-5 w-5" /> */}
-							<Image
-								src="/logo.png"
-								alt="Millennium Duty Free"
-								width={32}
-								height={32}
-								className="text-slate-900"
-							/>
-						</div>
-						<span className="text-xl font-semibold tracking-tight">
-							<span className="text-slate-900">Millennium</span>
-							<span style={{ color: ACCENT }}>Duty</span>
-							<span className="text-slate-900"> Free</span>
-						</span>
-					</a>
-					<p className="mt-3">
-						Your airport companion for savings and luxury.
-					</p>
-				</div>
-				<div>
-					<p className="font-semibold text-slate-900 mb-2 sm:text-center">Contact</p>
-					<ul className="space-y-1">
-						<li className="flex items-center gap-2">
-							<Clock className="h-4 w-4" /> 24/7 Support
-						</li>
-						<li className="flex items-center gap-2">
-							<MapPin className="h-4 w-4" /> Air‑side, Main
-							Concourse
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div className="border-t border-white/10 py-5 text-center text-xs text-slate-990">
-				© {new Date().getFullYear()} Millennium Duty Free. All rights
-				reserved.
-			</div>
-		</footer>
-	);
+  return (
+    <footer className="border-t border-[#d3b462]/30 bg-[#233b72]">
+      <div
+        className="
+          mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10
+          flex flex-col items-center text-center gap-8
+          md:grid md:grid-cols-2 md:text-left md:items-start md:gap-12 lg:gap-96
+          text-sm text-[#d3b462]
+        "
+      >
+        {/* Logo + tagline */}
+        <div>
+          <a href="#" className="flex items-center justify-center md:justify-start gap-3 group">
+            <Image
+              src="/logo.jpg" // your logo in /public
+              alt="Millennium Duty Free"
+              width={180}
+              height={60}
+              priority
+            />
+          </a>
+          <p className="mt-3 text-[#d3b462]/90">
+            Your airport companion for savings and luxury.
+          </p>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <p className="font-semibold text-[#d3b462] mb-2">Contact</p>
+          <ul className="space-y-2 text-[#d3b462]/90">
+            <li className="flex items-center justify-center md:justify-start gap-2">
+              <Clock className="h-4 w-4 text-[#d3b462]" /> 24/7 Support
+            </li>
+            <li className="flex items-center justify-center md:justify-start gap-2">
+              <MapPin className="h-4 w-4 text-[#d3b462]" /> Air-side, Main Concourse
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-[#d3b462]/30 py-5 text-center text-xs text-[#d3b462]/80">
+        © {new Date().getFullYear()} Millennium Duty Free. All rights reserved.
+      </div>
+    </footer>
+  );
 }
+
+
 
 function GradientBG() {
 	return (
