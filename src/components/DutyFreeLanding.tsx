@@ -547,7 +547,7 @@ function SiteFooter() {
               <Clock className="h-4 w-4 text-[#d3b462]" /> 24/7 Support
             </li>
             <li className="flex items-center justify-center md:justify-start gap-2">
-              <MapPin className="h-4 w-4 text-[#d3b462]" /> Air-side, Main Concourse
+              <MapPin className="h-4 w-4 text-[#d3b462]" /> Addis Ababa Bole International Airport - Skylight Hotel
             </li>
           </ul>
         </div>
