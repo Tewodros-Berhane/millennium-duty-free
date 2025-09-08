@@ -102,7 +102,7 @@ function Hero() {
 
 			{/* New Year burst (confetti + fading message) */}
 			<AdeyAbebaConfetti />
-			<NewYearBurst durationMs={132321312321321} />
+			<NewYearBurst durationMs={5000} />
 
 			{/* Main hero copy (stays on page) */}
 			<div className="relative z-10 flex h-full items-center justify-center px-6 text-center">

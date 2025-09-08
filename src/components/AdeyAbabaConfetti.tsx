@@ -28,7 +28,7 @@ export default function AdeyAbebaConfetti({
         const newPetal: Petal = {
           id: counter,
           left: Math.random() * 100, // vw
-          size: Math.random() * 50 + 20,
+          size: Math.random() * 30 + 20,
           duration: Math.random() * 6 + 6, // 6–12s
           delay: 0,
           rotate: Math.random() * 360,
